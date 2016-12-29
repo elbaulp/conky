@@ -19,7 +19,6 @@ conky.config = {
   update_interval = 1,
   total_run_times = 0,
 
-
   -- Performance
 
   double_buffer = true,
@@ -34,7 +33,7 @@ conky.config = {
   own_window_type = 'override',
   own_window_transparent = true,
 --  own_window_argb_visual = true,  
---  own_window_argb_value = 100,
+--  own_window_argb_value = 50,
 
 
   -- THIS is ignored if own_window_type is set to 'override'...
@@ -45,7 +44,7 @@ conky.config = {
   alignment = 'top_right',
   xinerama_head = 2,
   gap_x = 10,
-  gap_y = 0,
+  gap_y = 5,
 
 
   -- Size
@@ -66,12 +65,12 @@ conky.config = {
 
   -- Colors
 
-  default_color = 'fffeff',
+  default_color = 'EB6C02',
   default_shade_color = '000000',
   default_outline_color = '666666',
-  color0 = 'fffeff',
+  color0 = 'f8f2eb', --'fffeff',
   color1 = 'f8F2eb',
-  color2 = '262626', --'091219',
+  color2 = 'eb6c02', --'091219',
 
 
   -- Decorations
@@ -81,11 +80,9 @@ conky.config = {
   draw_borders = false,
   draw_graph_borders = true,
 
-
   -- Variable
 
   top_name_width = 8,
-
 
   -- Lua
 

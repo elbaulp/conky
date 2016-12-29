@@ -20,7 +20,7 @@ local function drawToConkyWindow(cairoContext)
 
   local colorHexidecimals = {0xe5c81c, 0x1faaf0, 0xef5721, 0x7d1346, 0x28c036, 0xc32546, 0x1e557c, 0xa16ac7}
   local backgroundAlphaLowerBound = 0.35
-  local backgroundAlphaUpperBound = 0.65
+  local backgroundAlphaUpperBound = 0.8
 
   -- In the case of multiple reporting curves which are related and grouped (such as when reporting for multiple CPUs),
   -- this provides successive stepping of alpha transparency for each background curve, from most to least transparent,
@@ -88,7 +88,7 @@ local function drawToConkyWindow(cairoContext)
         angle_end = 240,
         color = getColorHexidecmial(3),
         alpha = 0.95,
-        background_color = 0x091219,
+        background_color = 0xf8f2eb,
         background_alpha = backgroundAlphaUpperBound  
       },
 
@@ -102,7 +102,7 @@ local function drawToConkyWindow(cairoContext)
         angle_end = 66,
         color = getColorHexidecmial(5),
         alpha = 0.95,
-        background_color = 0x091219,
+        background_color = 0xf8f2eb, --0x091219,
         background_alpha = backgroundAlphaUpperBound  
       },
 
@@ -116,7 +116,7 @@ local function drawToConkyWindow(cairoContext)
         angle_end = 120,
         color = getColorHexidecmial(4),
         alpha = 0.95,
-        background_color = 0x091219,
+        background_color = 0xf8f2eb,
         background_alpha = backgroundAlphaUpperBound  
       },
 
@@ -130,7 +130,7 @@ local function drawToConkyWindow(cairoContext)
         angle_end = 240,
         color = getColorHexidecmial(7),
         alpha = 0.95,
-        background_color = 0x091219,
+        background_color = 0xf8f2eb,
         background_alpha = backgroundAlphaUpperBound  
       },
 
@@ -145,7 +145,7 @@ local function drawToConkyWindow(cairoContext)
         angle_end = 120,
         color = getColorHexidecmial(1),
         alpha = 0.95,
-        background_color = 0x091219,
+        background_color = 0xf8f2eb,
         background_alpha = backgroundAlphaUpperBound  
       },
 
@@ -160,7 +160,7 @@ local function drawToConkyWindow(cairoContext)
         angle_end = 240,
         color = getColorHexidecmial(1),
         alpha = 0.95,
-        background_color = 0x091219,
+        background_color = 0xf8f2eb,
         background_alpha = backgroundAlphaUpperBound  
       }
 
@@ -395,7 +395,7 @@ function conky_main()
   -- in the case cpu updates are present in the curve descriptors, to prevent segfaults, 
   -- ensure conky has had at least five updates, before drawing to the screen...
 
-	if updates > 5 
+  if updates > 5 
   then
     drawToConkyWindow(cairoContext)
   end
