@@ -62,7 +62,7 @@ then
 fi
 
 result=''
-cpuStatusOutput="`$HOME/.conky/conky-configs/system-informatics-colors/scripts/posix/cpus-system-informatics-colors.sh`"
+cpuStatusOutput="`$HOME/.conky/system-informatics-colors/scripts/posix/cpus-system-informatics-colors.sh`"
 
 if [ -z "$cpuStatusOutput" ]
 then

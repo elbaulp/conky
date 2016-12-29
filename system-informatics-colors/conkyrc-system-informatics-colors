@@ -86,7 +86,7 @@ conky.config = {
 
   -- Lua
 
-  lua_load = '~/.conky/conky-configs/system-informatics-colors/scripts/lua/conky-curves-system-informatics-colors.lua ~/.conky/conky-configs/system-informatics-colors/scripts/lua/seamod_rings.lua',
+  lua_load = '~/.conky/system-informatics-colors/scripts/lua/conky-curves-system-informatics-colors.lua',
   lua_draw_hook_pre = 'conky_main'
 }
 
@@ -100,7 +100,7 @@ ${goto 143}${voffset 18}${font Serif:size=14}${color2}${time %D}
 ${image $HOME/.conky/images/gentoo.png -s 32x34 -p 0,85}
 ${offset 35}${voffset -8}${font Hack:bold:size=16}${color2}$kernel
 ${font Hack:size=10}${color0}Up for $uptime
-${execp $HOME/.conky/conky-configs/system-informatics-colors/scripts/posix/conky-cpus-system-informatics-colors.sh 'Hack:bold:size=8' 'Hack' 'color2' 'color0' '300' '' '10'}
+${execp $HOME/.conky/system-informatics-colors/scripts/posix/conky-cpus-system-informatics-colors.sh 'Hack:bold:size=8' 'Hack' 'color2' 'color0' '300' '' '10'}
 ${goto 260}${font Hack:bold:size=16}${color2}CPU
 \
 ${goto 14}${voffset -100}${font Hack:bold:size=10}${color2}Top CPU ${goto 100}CPU% ${goto 142}MEM%

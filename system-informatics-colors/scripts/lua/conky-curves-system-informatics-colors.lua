@@ -252,7 +252,7 @@ local function drawToConkyWindow(cairoContext)
 
   -- draw CPUs (or cores, or threads, whichever the case may be)
 
-    local cpuPercentageCommand=os.getenv('HOME')..'/.conky/conky-configs/system-informatics-colors/scripts/posix/cpus-system-informatics-colors.sh true'  
+    local cpuPercentageCommand=os.getenv('HOME')..'/.conky/system-informatics-colors/scripts/posix/cpus-system-informatics-colors.sh true'  
     local cpuPercentagesString = nil
   
     -- start by attempting to get the number of CPUs, cores, or threads from the system...
@@ -398,7 +398,7 @@ function conky_main()
 
   if updates > 5 
   then
---     local rh = rsvg_create_handle_from_file('/home/hkr/.conky/images/gentoo.svg')
+--     local rh = rsvg_create_handle_from_file(os.getenv('HOME')..'/.conky/images/gentoo.svg')
 --     local rd = RsvgDimensionData:create()
 --     rsvg_handle_get_dimensions(rh, rd)
 -- 
