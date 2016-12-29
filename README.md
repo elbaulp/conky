@@ -2,6 +2,10 @@
 
 A conky configuration based on [conky-config](https://github.com/antonio-malcolm/conky-configs) from [Antonio Malcolm](https://github.com/antonio-malcolm).
 
+## Screenshot
+
+![Shot](SCREENSHOTS/screenshot.png)
+
 ## Original README
 
 **Conky configs and Lua scripts, by Antonio Malcolm (v2015.07.26)**
