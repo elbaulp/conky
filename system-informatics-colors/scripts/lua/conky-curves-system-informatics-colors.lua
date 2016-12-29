@@ -11,6 +11,7 @@
 -- Authored by Antonio Malcolm
 
 require 'cairo'
+-- require 'rsvg'
 
 
 -- Responsible for drawing the reporting objects to the Conky window
@@ -397,6 +398,16 @@ function conky_main()
 
   if updates > 5 
   then
+--     local rh = rsvg_create_handle_from_file('/home/hkr/.conky/images/gentoo.svg')
+--     local rd = RsvgDimensionData:create()
+--     rsvg_handle_get_dimensions(rh, rd)
+-- 
+--     w, h, em, ex = rd:get()
+-- 
+--     print("width: "..w.." height: "..h.." em: "..em.." ex: "..ex)
+--     rsvg_handle_render_cairo(rh, cairoContext)
+--     rsvg_destroy_handle(rh)
+-- 
     drawToConkyWindow(cairoContext)
   end
 
