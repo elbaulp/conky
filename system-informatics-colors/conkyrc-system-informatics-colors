@@ -33,16 +33,19 @@ conky.config = {
   own_window_class = 'Conky',
   own_window_type = 'override',
   own_window_transparent = true,
+--  own_window_argb_visual = true,  
+--  own_window_argb_value = 100,
+
 
   -- THIS is ignored if own_window_type is set to 'override'...
   own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
 
-
   -- Positioning (based on 1920x1080 display res)
 
   alignment = 'top_right',
-  gap_x = 1370,
-  gap_y = 10,
+  xinerama_head = 2,
+  gap_x = 10,
+  gap_y = 0,
 
 
   -- Size
@@ -56,7 +59,7 @@ conky.config = {
 
   use_xft = true,
   xftalpha = 1,
-  font = 'Ruda:size=12',
+--  font = 'Ohsnap:size=12',
   override_utf8_locale = true,
   uppercase = false,
 
@@ -68,7 +71,7 @@ conky.config = {
   default_outline_color = '666666',
   color0 = 'fffeff',
   color1 = 'f8F2eb',
-  color2 = '091219',
+  color2 = '00ff00', --'091219',
 
 
   -- Decorations
@@ -86,30 +89,29 @@ conky.config = {
 
   -- Lua
 
-  lua_load = '~/.config/conky/scripts/lua/conky-curves-system-informatics-colors.lua',
+  lua_load = '~/.conky/conky-configs/system-informatics-colors/scripts/lua/conky-curves-system-informatics-colors.lua ~/.conky/conky-configs/system-informatics-colors/scripts/lua/seamod_rings.lua',
   lua_draw_hook_pre = 'conky_main'
-
 }
 
 
 -- Output
 
 conky.text = [[
-${font Ruda:bold:size=62}${color2}${time %H}${font Ruda:size=62}${color1}${time %M}${voffset -32}${font Ruda:size=31}${time %S}
-${voffset 16}${font Ruda:bold:size=28}${color2}${time %A} ${voffset -14}${font Ruda:size=14}${color1}${time %d %B %Y}
+${font Hack:bold:size=62}${color2}${time %H}${font Hack:size=62}${color1}${time %M}${voffset -32}${font Hack:size=31}${time %S}
+${voffset 16}${font Hack:bold:size=28}${color2}${time %A} ${voffset -14}${font Hack:size=14}${color1}${time %d %B %Y}
 
-${image $HOME/.config/conky/images/void-logo-24x20.png -s 24x20 -p 0,156}
-${offset 26}${voffset -8}${font Ruda:bold:size=16}${color2}$nodename
-${voffset -7}${font Ruda:size=12}${color0}Void GNU/Linux, 64-bit
-${font Ruda:size=12}${color0}Kernel v$kernel
-${font Ruda:size=12}${color0}Up for $uptime
+${image $HOME/.conky/images/void-logo-24x20.png -s 24x20 -p 0,156}
+${offset 26}${voffset -8}${font Hack:bold:size=16}${color2}$nodename
+${voffset -7}${font Hack:size=12}${color0}Void GNU/Linux, 64-bit
+${font Hack:size=12}${color0}Kernel v$kernel
+${font Hack:size=12}${color0}Up for $uptime
 
-${execp $HOME/.config/conky/scripts/posix/conky-cpus-system-informatics-colors.sh 'Ruda:bold' 'Ruda' 'color2' 'color0'}
+${execp $HOME/.conky/conky-configs/system-informatics-colors/scripts/posix/conky-cpus-system-informatics-colors.sh 'Hack:bold' 'Hack' 'color2' 'color0' '188'}
 
-${goto 206}${font Ruda:bold:size=16}${color2}CPU
+${goto 206}${font Hack:bold:size=16}${color2}CPU
 
-${goto 14}${voffset -120}${font Ruda:bold:size=10}${color2}Top CPU ${goto 94}CPU% ${goto 136}MEM%
-${goto 14}${font Ruda:size=10}${color0}${top name 1} ${goto 90}${top cpu 1} ${goto 132}${top mem 1}
+${goto 14}${voffset -120}${font Hack:bold:size=10}${color2}Top CPU ${goto 94}CPU% ${goto 136}MEM%
+${goto 14}${font Hack:size=10}${color0}${top name 1} ${goto 90}${top cpu 1} ${goto 132}${top mem 1}
 ${goto 14}${top name 2} ${goto 90}${top cpu 2} ${goto 132}${top mem 2}
 ${goto 14}${top name 3} ${goto 90}${top cpu 3} ${goto 132}${top mem 3}
 ${goto 14}${top name 4} ${goto 90}${top cpu 4} ${goto 132}${top mem 4}
@@ -120,37 +122,37 @@ ${goto 14}${top name 8} ${goto 90}${top cpu 8} ${goto 132}${top mem 8}
 ${goto 14}${top name 9} ${goto 90}${top cpu 9} ${goto 132}${top mem 9}
 ${goto 14}${top name 10} ${goto 90}${top cpu 10} ${goto 132}${top mem 10}
 
-${goto 80}${voffset 20}${font Ruda:bold}${color2}RAM ${offset 8}${font Ruda}${color0}$mem / $memmax
-${goto 80}${font Ruda:bold}${color2}SWAP ${font Ruda}${color0}$swap / $swapmax
+${goto 80}${voffset 20}${font Hack:bold}${color2}RAM ${offset 8}${font Hack}${color0}$mem / $memmax
+${goto 80}${font Hack:bold}${color2}SWAP ${font Hack}${color0}$swap/ $swapmax
 
-${goto 168}${voffset 8}${font Ruda:bold:size=16}${color2}MEMORY
+${goto 168}${voffset 8}${font Hack:bold:size=16}${color2}MEMORY
 
-${goto 280}${voffset -104}${font Ruda:bold:size=10}${color2}Top MEM ${goto 360}CPU% ${goto 402}MEM%
-${goto 280}${font Ruda:size=10}${color0}${top_mem name 1} ${goto 356}${top_mem cpu 1} ${goto 398}${top_mem mem 1}
+${goto 280}${voffset -104}${font Hack:bold:size=10}${color2}Top MEM ${goto 360}CPU% ${goto 402}MEM%
+${goto 280}${font Hack:size=10}${color0}${top_mem name 1} ${goto 356}${top_mem cpu 1} ${goto 398}${top_mem mem 1}
 ${goto 280}${top_mem name 2} ${goto 356}${top_mem cpu 2} ${goto 398}${top_mem mem 2}
 ${goto 280}${top_mem name 3} ${goto 356}${top_mem cpu 3} ${goto 398}${top_mem mem 3}
 ${goto 280}${top_mem name 4} ${goto 356}${top_mem cpu 4} ${goto 398}${top_mem mem 4}
 ${goto 280}${top_mem name 5} ${goto 356}${top_mem cpu 5} ${goto 398}${top_mem mem 5}
 
-${goto 172}${voffset -10}${font Ruda}${color0}${battery_short}
+${goto 172}${voffset 0}${font Hack}${color0}${battery_short}
 
-${alignr 60}${voffset -26}${font Ruda:bold}${color2}ROOT ${offset 4}${font Ruda}${color0}${fs_used /} ${alignr 77}/ ${fs_size /}
-${alignr 60}${font Ruda:bold}${color2}HOME ${font Ruda}${color0}${fs_used /home} ${alignr 77}/ ${fs_size /home}
+${alignr 60}${voffset -26}${font Hack:bold}${color2}ROOT ${offset 4}${font Hack}${color0}${fs_used /} ${alignr 77}/ ${fs_size /}
+${alignr 60}${font Hack:bold}${color2}HOME ${font Hack}${color0}${fs_used /home} ${alignr 77}/ ${fs_size /home}
 
-${goto 158}${voffset -42}${font Ruda:bold:size=16}${color2}BATTERY
-${goto 364}${voffset 8}${font Ruda:bold:size=16}${color2}VOLUMES
+${goto 158}${voffset -30}${font Hack:bold:size=16}${color2}BATTERY
+${goto 364}${voffset 8}${font Hack:bold:size=16}${color2}VOLUMES
 
-${goto 110}${voffset 1}${font Ruda:bold}${color2}DOWN ${font Ruda}${color0}${downspeedf enp0s25} KiB/s
-${goto 110}${font Ruda:bold}${color2}UP ${offset 26}${font Ruda}${color0}${upspeedf enp0s25} KiB/s
+${goto 110}${voffset 1}${font Hack:bold}${color2}DOWN ${font Hack}${color0}${downspeedf enp3s0} KiB/s
+${goto 110}${font Hack:bold}${color2}UP ${offset 26}${font Hack}${color0}${upspeedf enp3s0} KiB/s
 
-${goto 96}${voffset -4}${font Ruda:bold:size=16}${color2}ETHERNET
-${goto 228}${voffset -40}${font Ruda:bold:size=10}${color2}Address ${goto 330}Total Down ${goto 410}Total Up
-${goto 228}${font Ruda:size=10}${color0}${addr enp0s25} ${goto 330}${totaldown enp0s25} ${goto 410}${totalup enp0s25}
+${goto 96}${voffset -4}${font Hack:bold:size=16}${color2}ETHERNET
+${goto 228}${voffset -40}${font Hack:bold:size=10}${color2}Address ${goto 330}Total Down ${goto 410}Total Up
+${goto 228}${font Hack:size=10}${color0}${addr enp3s0} ${goto 330}${totaldown enp3s0} ${goto 410}${totalup enp3s0}
 
-${alignr 118}${voffset 22}${font Ruda:bold}${color2}DOWN ${font Ruda}${color0}${downspeedf wlp3s0} KiB/s
-${alignr 118}${font Ruda:bold}${color2}UP ${font Ruda}${color0}${upspeedf wlp3s0} KiB/s
+${alignr 118}${voffset 22}${font Hack:bold}${color2}DOWN ${font Hack}${color0}${downspeedf wlp2s0} KiB/s
+${alignr 118}${font Hack:bold}${color2}UP ${font Hack}${color0}${upspeedf wlp2s0} KiB/s
 
-${goto 314}${voffset -4}${font Ruda:bold:size=16}${color2}WIRELESS
-${goto 46}${voffset -40}${font Ruda:bold:size=10}${color2}Address ${goto 148}Total Down ${goto 230}Total Up
-${goto 46}${font Ruda:size=10}${color0}${addr wlp3s0} ${goto 148}${totaldown wlp3s0} ${goto 230}${totalup wlp3s0}
+${goto 314}${voffset -4}${font Hack:bold:size=16}${color2}WIRELESS
+${goto 46}${voffset -40}${font Hack:bold:size=10}${color2}Address ${goto 148}Total Down ${goto 230}Total Up
+${goto 46}${font Hack:size=10}${color0}${addr wlp2s0} ${goto 148}${totaldown wlp2s0} ${goto 230}${totalup wlp2s0}
 ]]

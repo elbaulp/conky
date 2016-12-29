@@ -63,7 +63,7 @@ cat /proc/cpuinfo | grep 'cpu MHz' | {
       else
         cpuCurrentPercentage="${cpuCurrentPercentage#*.}"
       fi
-
+      cpuCurrentPercentage="\${cpu cpu$count}"
       if $percentagesOnly
       then
         

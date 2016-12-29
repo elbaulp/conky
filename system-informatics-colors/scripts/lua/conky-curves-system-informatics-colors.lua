@@ -136,7 +136,7 @@ local function drawToConkyWindow(cairoContext)
 
       network_wired = {
         -- assumes gigabit...
-        percentage_divisor = 122070,
+        percentage_divisor = 12000,
         position_x = 105, 
         position_y = 854,
         radius = 66,
@@ -251,76 +251,70 @@ local function drawToConkyWindow(cairoContext)
 
   -- draw CPUs (or cores, or threads, whichever the case may be)
 
-  local cpuPercentageCommand=os.getenv('HOME')..'/.config/conky/scripts/posix/cpus-system-informatics-colors.sh true'  
-  local cpuPercentagesString = nil
+    local cpuPercentageCommand=os.getenv('HOME')..'/.conky/conky-configs/system-informatics-colors/scripts/posix/cpus-system-informatics-colors.sh true'  
+    local cpuPercentagesString = nil
+  
+    -- start by attempting to get the number of CPUs, cores, or threads from the system...
+    local cpuPercentageResponseOk, cpuPercentageResponse = pcall(io.popen, cpuPercentageCommand)
+  
+  
+    -- in case the user's system doesn't support Lua's io.popen()...
 
-  -- start by attempting to get the number of CPUs, cores, or threads from the system...
-  local cpuPercentageResponseOk, cpuPercentageResponse = pcall(io.popen, cpuPercentageCommand)
+    if cpuPercentageResponseOk and cpuPercentageResponse
+    then
+      cpuPercentagesString = cpuPercentageResponse:read('*a')
+      cpuPercentageResponse:close()
+    else
+      cpuPercentagesString = nil
+    end
 
-  -- in case the user's system doesn't support Lua's io.popen()...
+    if cpuPercentagesString ~= nil
+    then
+  
+      cpuPercentages = {}
 
-  if cpuPercentageResponseOk and cpuPercentageResponse
-  then
-    cpuPercentagesString = cpuPercentageResponse:read('*a')
-    cpuPercentageResponse:close()
-  else
-    cpuPercentagesString = nil
-  end
-
-  if cpuPercentagesString ~= nil
-  then
-
-    cpuPercentages = {}
-
-    for percentage in string.gmatch(cpuPercentagesString, "([^,]+)")
-    do
-
-      if percentage ~= '100'
-      then
-        percentage = string.format('.%s', percentage)
-      else
-        percentage = '1.0'
+      for percentage in string.gmatch(cpuPercentagesString, "([^,]+)")
+      do
+        percentage = conky_parse(percentage) / 100
+        table.insert(cpuPercentages, percentage)
       end
+  
+      local cpuCount = table.getn(cpuPercentages)
 
-      table.insert(cpuPercentages, tonumber(percentage))
-
-    end
-
-    local cpuCount = table.getn(cpuPercentages)
-    local alphaSteps = getBackgroundAlphaSteps(cpuCount)
-
-    -- Step backwards through the number of CPUs (or cores, or threads), so the first curve is always outermost...
-
-    for idx = cpuCount, 1 , -1
-    do
-
-      -- because we are stepping backwards through the CPU count, 
-      -- we need to obtain the inverse of the current index, 
-      -- to set (increase) the radius for each new curve,
-      -- as well as ensure that data obtained from arrays are taken from the correct indices...
-   
-      local idxInverse = (cpuCount - idx) + 1
-
-      local cpuCurveDescriptor = getCurveDescriptor('cpu')
-      cpuCurveDescriptor['radius'] = cpuCurveDescriptor['radius'] * idxInverse
-      cpuCurveDescriptor['color'] = getColorHexidecmial(idx)
-      cpuCurveDescriptor['background_alpha'] = alphaSteps[idxInverse]
-
-      drawPercentageCurve(cpuCurveDescriptor, cpuPercentages[idx])
-
-    end
-
-  else
-
-    -- default to displaying the average overall CPU load, per Conky (LAST RESORT)...
-
-    local cpuCurveDescriptor = getCurveDescriptor('cpu')
-    cpuCurveDescriptor['radius'] = cpuCurveDescriptor['radius'] * 3
-
-    drawPercentageCurveFromConkyValue(cpuCurveDescriptor, '${cpu cpu0}')
+      local alphaSteps = getBackgroundAlphaSteps(cpuCount)
+  
+      -- Step backwards through the number of CPUs (or cores, or threads), so the first curve is always outermost...
+  
+      for idx = cpuCount, 1 , -1
+      do
+  
+        -- because we are stepping backwards through the CPU count, 
+        -- we need to obtain the inverse of the current index, 
+        -- to set (increase) the radius for each new curve,
+        -- as well as ensure that data obtained from arrays are taken from the correct indices...
+     
+        local idxInverse = (cpuCount - idx) + 1
+  
+        local cpuCurveDescriptor = getCurveDescriptor('cpu')
+        cpuCurveDescriptor['radius'] = cpuCurveDescriptor['radius'] * idxInverse
+        cpuCurveDescriptor['color'] = getColorHexidecmial(idx)
+        cpuCurveDescriptor['background_alpha'] = alphaSteps[idxInverse]
+  
+        drawPercentageCurve(cpuCurveDescriptor, cpuPercentages[idx])
+  
+      end
+  
+    else
+  
+     -- default to displaying the average overall CPU load, per Conky (LAST RESORT)...
+ 
+     local cpuCurveDescriptor = getCurveDescriptor('cpu')
+     cpuCurveDescriptor['radius'] = cpuCurveDescriptor['radius'] * 3
+ 
+     drawPercentageCurveFromConkyValue(cpuCurveDescriptor, '${cpu cpu0}')
 
   end
-
+ 
 
   -- draw RAM and swap...
 
@@ -358,8 +352,8 @@ local function drawToConkyWindow(cairoContext)
   nextCurveDescriptor['color'] = getColorHexidecmial(4)
   nextCurveDescriptor['background_alpha'] = getBackgroundAlphaSteps(4)[3]
 
-  drawPercentageCurveFromConkyValue(getCurveDescriptor('network_wired'), '${downspeedf enp0s25}')
-  drawPercentageCurveFromConkyValue(nextCurveDescriptor, '${upspeedf enp0s25}')
+  drawPercentageCurveFromConkyValue(getCurveDescriptor('network_wired'), '${downspeedf enp3s0}')
+  drawPercentageCurveFromConkyValue(nextCurveDescriptor, '${upspeedf enp3s0}')
 
 
   -- draw wireless network...
@@ -370,7 +364,7 @@ local function drawToConkyWindow(cairoContext)
   nextCurveDescriptor['color'] = getColorHexidecmial(4)
   nextCurveDescriptor['background_alpha'] = getBackgroundAlphaSteps(4)[3]
 
-  drawPercentageCurveFromConkyValue(getCurveDescriptor('network_wireless'), '${downspeedf wlp3s0}')
+  drawPercentageCurveFromConkyValue(getCurveDescriptor('network_wireless'), '${downspeedf wlp2s0}')
   drawPercentageCurveFromConkyValue(nextCurveDescriptor, '${upspeedf wlp3s0}')
 
 end
