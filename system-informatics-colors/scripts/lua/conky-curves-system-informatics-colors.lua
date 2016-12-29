@@ -81,7 +81,7 @@ local function drawToConkyWindow(cairoContext)
       cpu = {
         percentage_divisor = 100,
         position_x = 346, 
-        position_y = 324,
+        position_y = 245,
         radius = 22,
         weight = 18,
         angle_start = 0,
@@ -95,7 +95,7 @@ local function drawToConkyWindow(cairoContext)
       memory = {
         percentage_divisor = 100,
         position_x = 75, 
-        position_y = 578,
+        position_y = 400,
         radius = 66,
         weight = 18,
         angle_start = 360,
@@ -109,7 +109,7 @@ local function drawToConkyWindow(cairoContext)
       battery = {
         percentage_divisor = 100,
         position_x = 166, 
-        position_y = 696,
+        position_y = 500,
         radius = 44,
         weight = 18,
         angle_start = 360,
@@ -123,7 +123,7 @@ local function drawToConkyWindow(cairoContext)
       volume_use = {
         percentage_divisor = 100,
         position_x = 456, 
-        position_y = 734,
+        position_y = 520,
         radius = 66,
         weight = 18,
         angle_start = 0,
@@ -138,7 +138,7 @@ local function drawToConkyWindow(cairoContext)
         -- assumes gigabit...
         percentage_divisor = 12000,
         position_x = 105, 
-        position_y = 854,
+        position_y = 635,
         radius = 66,
         weight = 18,
         angle_start = 360,
@@ -151,9 +151,9 @@ local function drawToConkyWindow(cairoContext)
 
       network_wireless = {
         -- assumes wireless-n...
-        percentage_divisor = 36621,
+        percentage_divisor = 6000,
         position_x = 405, 
-        position_y = 982,
+        position_y = 750,
         radius = 66,
         weight = 18,
         angle_start = 0,

@@ -103,7 +103,7 @@ result="$result"'
   mhz="${statusPair%%:*}"
   percentage="${statusPair#*:}"
 
-  result=$result"$goto$voffset$font1$color1$count $font2$color2$mhz"'MHz ${alignr 188}('$percentage'%)'
+  result=$result"$goto$voffset$font1$color1$count $color2"'('$percentage'%)'
 
   cpuStatusOutput="${cpuStatusOutput#*,}"
   count=$(($count + 1))
