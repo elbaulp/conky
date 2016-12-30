@@ -129,13 +129,14 @@ ${goto 280}${top_mem name 5} ${goto 356}${top_mem cpu 5} ${goto 398}${top_mem me
 
 ${goto 172}${voffset 2}${font Hack}${color0}${battery_short}
 \
-${alignr 90}${voffset -20}${font Hack:bold}${color2}/ ${offset 40}${font Hack:size=8}${color0}${fs_used /} ${alignr 77}/ ${fs_size /}
-${alignr 60}${font Hack:bold}${color2}/home ${font Hack:size=8}${color0}${fs_used /home} ${alignr 77}/ ${fs_size /home}
+${goto 290}${voffset -20}${font Hack:bold}${color2}/ ${offset 40}${font Hack:size=8}${color0}${fs_used /} ${alignr 77}/ ${fs_size /}
+${goto 290}${voffset 3}${font Hack:bold}${color2}/home ${font Hack:size=8}${color0}${fs_used /home} ${alignr 77}/ ${fs_size /home}
+${goto 290}${voffset 3}${font Hack:bold}${color2}/ssd2 ${font Hack:size=8}${color0}${fs_used /home/hkr/ssd2} ${alignr 77}/ ${fs_size /home/hkr/ssd2}
+\
+${goto 140}${voffset -15}${font Hack:bold:size=11}${color2}BATTERY
+${goto 395}${voffset 0}${font Hack:bold:size=11}${color2}VOLUMES
 
-${goto 140}${voffset -5}${font Hack:bold:size=11}${color2}BATTERY
-${goto 420}${voffset 5}${font Hack:bold:size=11}${color2}VOLUMES
-
-${goto 110}${voffset 11}${font Hack:bold}${color2}DOWN ${font Hack:size=8}${voffset -3}${color0}${downspeedf enp3s0} KiB/s
+${goto 110}${voffset 15}${font Hack:bold}${color2}DOWN ${font Hack:size=8}${voffset -3}${color0}${downspeedf enp3s0} KiB/s
 ${goto 110}${voffset 7}${font Hack:bold}${color2}UP ${offset 20}${voffset -3}${font Hack:size=8}${color0}${upspeedf enp3s0} KiB/s
 
 

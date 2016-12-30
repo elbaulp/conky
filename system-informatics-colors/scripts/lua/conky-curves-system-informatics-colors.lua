@@ -331,14 +331,19 @@ local function drawToConkyWindow(cairoContext)
 
   -- draw volumes...
 
-  nextCurveDescriptor = getCurveDescriptor('volume_use')
-  nextCurveDescriptor['radius'] = 44
-  nextCurveDescriptor['color'] = getColorHexidecmial(4)
-  nextCurveDescriptor['background_alpha'] = getBackgroundAlphaSteps(4)[3]
+  homeCurveDescriptor = getCurveDescriptor('volume_use')
+  homeCurveDescriptor['radius'] = 44
+  homeCurveDescriptor['color'] = getColorHexidecmial(4)
+  homeCurveDescriptor['background_alpha'] = getBackgroundAlphaSteps(4)[3]
+
+  ssdCurveDescriptor = getCurveDescriptor('volume_use')
+  ssdCurveDescriptor['radius'] = 22
+  ssdCurveDescriptor['color'] = getColorHexidecmial(5)
+  ssdCurveDescriptor['background_alpha'] = getBackgroundAlphaSteps(4)[2]
 
   drawPercentageCurveFromConkyValue(getCurveDescriptor('volume_use'), '${fs_used_perc /}')
-  drawPercentageCurveFromConkyValue(nextCurveDescriptor, '${fs_used_perc /home}')
-  
+  drawPercentageCurveFromConkyValue(homeCurveDescriptor, '${fs_used_perc /home}')
+  drawPercentageCurveFromConkyValue(ssdCurveDescriptor, '${fs_used_perc /home/hkr/ssd2}')
   
   -- draw battery...
 
