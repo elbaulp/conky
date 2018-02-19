@@ -1,7 +1,7 @@
 -- Copyright 2015 Antonio Malcolm
---   
--- This file, and all contents herein, is subject to the terms of the Mozilla Public License, v. 2.0. 
--- If a copy of the MPL was not distributed with this file, 
+--
+-- This file, and all contents herein, is subject to the terms of the Mozilla Public License, v. 2.0.
+-- If a copy of the MPL was not distributed with this file,
 -- you can obtain one at http://mozilla.org/MPL/2.0/.
 --
 -- conkyrc-system-informatics-colors - conkyrc config file
@@ -11,7 +11,7 @@
 -- Authored by Antonio Malcolm
 
 
-conky.config = { 
+conky.config = {
 
   -- Behavior
 
@@ -32,7 +32,7 @@ conky.config = {
   own_window_class = 'Conky',
   own_window_type = 'override',
   own_window_transparent = true,
---  own_window_argb_visual = true,  
+--  own_window_argb_visual = true,
 --  own_window_argb_value = 50,
 
 
@@ -50,7 +50,7 @@ conky.config = {
   -- Size
 
   minimum_width = 522,
-  maximum_width = 522,  
+  maximum_width = 522,
   minimum_height = 900,
 
 
@@ -96,60 +96,46 @@ conky.config = {
 conky.text = [[
 ${font Serif:size=40}${color2}${time %H}${font Serif:size=40}${color1}${time %M}${voffset -18}${font Serif:size=20}${time %S}\
 ${goto 143}${voffset 18}${font Serif:size=14}${color2}${time %D}
-
-${image $HOME/.conky/images/gentoo.png -s 32x34 -p 0,85}
+${image $HOME/.conky/images/gentoo.png -s 32x34 -p 0,70}
 ${offset 35}${voffset -8}${font Hack:bold:size=16}${color2}$kernel
-${font Hack:size=10}${color0}Up for $uptime
-${execp $HOME/.conky/system-informatics-colors/scripts/posix/conky-cpus-system-informatics-colors.sh 'Hack:bold:size=8' 'Hack' 'color2' 'color0' '300' '' '10'}
-${goto 260}${font Hack:bold:size=16}${color2}CPU
+${execp $HOME/.conky/system-informatics-colors/scripts/posix/conky-cpus-system-informatics-colors.sh 'Hack:bold:size=8' 'Hack' 'color2' 'color0' '300' '-100' '10'}
+${goto 335}${voffset 5}${font Hack:bold:size=7}${color2}CPU
 \
-${goto 14}${voffset -100}${font Hack:bold:size=10}${color2}Top CPU ${goto 100}CPU% ${goto 142}MEM%
+${goto 14}${font Hack:bold:size=8}${color2}Top CPU ${goto 100}CPU% ${goto 142}MEM%
 ${goto 14}${font Hack:size=8}${color0}${top name 1} ${goto 90}${top cpu 1} ${goto 132}${top mem 1}
 ${goto 14}${top name 2} ${goto 90}${top cpu 2} ${goto 132}${top mem 2}
 ${goto 14}${top name 3} ${goto 90}${top cpu 3} ${goto 132}${top mem 3}
 ${goto 14}${top name 4} ${goto 90}${top cpu 4} ${goto 132}${top mem 4}
 ${goto 14}${top name 5} ${goto 90}${top cpu 5} ${goto 132}${top mem 5}
-${goto 14}${top name 6} ${goto 90}${top cpu 6} ${goto 132}${top mem 6}
-${goto 14}${top name 7} ${goto 90}${top cpu 7} ${goto 132}${top mem 7}
-${goto 14}${top name 8} ${goto 90}${top cpu 8} ${goto 132}${top mem 8}
-${goto 14}${top name 9} ${goto 90}${top cpu 9} ${goto 132}${top mem 9}
 ${goto 14}${top name 10} ${goto 90}${top cpu 10} ${goto 132}${top mem 10}
 
-${goto 80}${voffset -3}${font Hack:bold}${color2}RAM ${voffset -3}${font Hack:size=8}${color0}$mem / $memmax
-${goto 80}${voffset 8}${font Hack:bold}${color2}SWAP ${voffset -3}${font Hack:size=8}${color0}$swap/ $swapmax
-
-${goto 50}${voffset 15}${font Hack:bold:size=11}${color2}MEMORY
-
-${goto 280}${voffset -80}${font Hack:bold:size=10}${color2}Top MEM ${goto 365}CPU% ${goto 410}MEM%
+${goto 80}${voffset 10}${font Hack:bold:size=8}${color2}RAM ${font Hack:size=7}${color0}$mem / $memmax
+${goto 80}${voffset 12}${font Hack:bold:size=8}${color2}SWAP ${font Hack:size=7}${color0}$swap/ $swapmax
+${goto 280}${voffset -55}${font Hack:bold:size=8}${color2}Top 5 ${goto 365}CPU% ${goto 410}MEM%
 ${goto 280}${font Hack:size=8}${color0}${top_mem name 1} ${goto 356}${top_mem cpu 1} ${goto 398}${top_mem mem 1}
 ${goto 280}${top_mem name 2} ${goto 356}${top_mem cpu 2} ${goto 398}${top_mem mem 2}
 ${goto 280}${top_mem name 3} ${goto 356}${top_mem cpu 3} ${goto 398}${top_mem mem 3}
 ${goto 280}${top_mem name 4} ${goto 356}${top_mem cpu 4} ${goto 398}${top_mem mem 4}
 ${goto 280}${top_mem name 5} ${goto 356}${top_mem cpu 5} ${goto 398}${top_mem mem 5}
 
-${goto 172}${voffset 2}${font Hack}${color0}${battery_short}
+${goto 140}${voffset 90}${font Hack}${color0}${battery_short}
 \
-${goto 290}${voffset -20}${font Hack:bold}${color2}/ ${offset 40}${font Hack:size=8}${color0}${fs_used /} ${alignr 77}/ ${fs_size /}
-${goto 290}${voffset 3}${font Hack:bold}${color2}/home ${font Hack:size=8}${color0}${fs_used /home} ${alignr 77}/ ${fs_size /home}
-${goto 290}${voffset 3}${font Hack:bold}${color2}/ssd2 ${font Hack:size=8}${color0}${fs_used /home/hkr/ssd2} ${alignr 77}/ ${fs_size /home/hkr/ssd2}
-\
-${goto 140}${voffset -15}${font Hack:bold:size=11}${color2}BATTERY
-${goto 395}${voffset 0}${font Hack:bold:size=11}${color2}VOLUMES
+${goto 210}${voffset -85}${font Hack:bold:size=7}${color2}/ ${font Hack:size=7}${color0}${fs_used /} ${alignr 185}/ ${fs_size /}
+${goto 210}${voffset 10}${font Hack:bold:size=7}${color2}/home ${font Hack:size=7}${color0}${fs_used /home} ${alignr 185}/ ${fs_size /home}
+${goto 210}${voffset 10}${font Hack:bold:size=7}${color2}/ssd2 ${font Hack:size=7}${color0}${fs_used /home/hkr/ssd2} ${alignr 185}/ ${fs_size /home/hkr/ssd2}
 
-${goto 110}${voffset 15}${font Hack:bold}${color2}DOWN ${font Hack:size=8}${voffset -3}${color0}${downspeedf enp3s0} KiB/s
-${goto 110}${voffset 7}${font Hack:bold}${color2}UP ${offset 20}${voffset -3}${font Hack:size=8}${color0}${upspeedf enp3s0} KiB/s
+${goto 110}${voffset 80}${font Hack:bold:size=8}${color2}DOWN ${font Hack:size=7}${voffset -2}${color0}${downspeedf enp3s0} KiB/s
+${goto 110}${voffset 10}${font Hack:bold:size=8}${color2}UP ${offset 12}${voffset -2}${font Hack:size=7}${color0}${upspeedf enp3s0} KiB/s
 
+${goto 110}${font Hack:bold:size=8}${color2}Addr ${font Hack:size=7}${color0}${addr enp3s0}
+${font Hack:bold:size=8}${goto 110}${color2}T.D ${goto 140}T.U
+${font Hack:size=7}${goto 110}${color1}${totaldown enp3s0} ${goto 140}${totalup enp3s0}
 
-${goto 75}${font Hack:bold:size=15}${color2}ETHERNET
-${goto 228}${voffset -35}${font Hack:bold:size=9}${color2}Address ${goto 330}Total Down ${goto 410}Total Up
-${goto 228}${font Hack:size=8}${color0}${addr enp3s0} ${goto 330}${totaldown enp3s0} ${goto 410}${totalup enp3s0}
+${goto 310}${voffset -45}${font Hack:bold:size=8}${color2}DOWN ${font Hack:size=7}${color0}${downspeedf wlp2s0} KiB/s
 
+${goto 310}${voffset -5}${font Hack:bold:size=8}${color2}UP ${offset 12}${font Hack:size=7}${color0}${upspeedf wlp2spnn0} KiB/s
 
-${goto 290}${font Hack:bold}${color2}DOWN ${voffset -3}${font Hack:size=8}${color0}${downspeedf wlp2s0} KiB/s
-${goto 290}${font Hack:bold}${color2}UP ${font Hack:size=8}${color0}${upspeedf wlp2s0} KiB/s
-
-${goto 365}${voffset 18}${font Hack:bold:size=11}${color2}WIRELESS
-
-${goto 100}${voffset -45}${font Hack:bold:size=9}${color2}Address ${goto 200}Total Down ${goto 280}Total Up
-${goto 100}${font Hack:size=8}${color0}${addr wlp2s0} ${goto 200}${totaldown wlp2s0} ${goto 280}${totalup wlp2s0}
+${goto 310}${font Hack:bold:size=8}${color2}Addr ${font Hack:size=7}${color0}${addr wlp2s0}
+${goto 310}${font Hack:bold:size=8}${color2}T.D ${offset 42}T.U
+${goto 310}${font Hack:size=7}${color1}${totaldown wlp2s0} ${offset 20}${totalup wlp2s0}
 ]]
