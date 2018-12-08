@@ -16,7 +16,7 @@ conky.config = {
   -- Behavior
 
   background = true,
-  update_interval = 1,
+  update_interval = 5,
   total_run_times = 0,
 
   -- Performance
